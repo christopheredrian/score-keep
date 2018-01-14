@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 export default class PlayerList extends React.Component {
 
   renderPlayers(){
+    //NOTE: Conditionals
     if(this.props.players.length === 0 ){
       return (
         <p>Add your first player to get started.</p>
