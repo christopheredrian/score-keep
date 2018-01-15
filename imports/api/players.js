@@ -1,5 +1,21 @@
 import {Mongo} from 'meteor/mongo';
+import numeral from 'numeral';
+
  // NOTE: Export to make it available outside
  // This will create a "Players" a mongo collection instance both for the
- // front and the back-end 
+ // front and the back-end
 export const Players = new Mongo.Collection('players');
+
+export const calculatePlayerPositions = (players) => {
+  let rank = 1;
+  return players.map((player, index) => {
+    if (index != 0 && players[index - 1].score > player.score) {
+      rank++;
+    }
+    return {
+      ...player,
+      rank,
+      position: numeral(rank).format('0.o')
+    };
+  });
+};

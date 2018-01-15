@@ -6,13 +6,14 @@ export default class Player extends React.Component{
 
   render(){
     let player = this.props.player;
+    let itemClassName = `item item--position-${player.rank}`;
     return (
-      <div className="item" key={player._id}>
+      <div className={itemClassName} key={player._id}>
         <div className="player">
           <div>
             <h3 className="player__name">{player.name}</h3>
             <p className="player__stats">
-               {player.score} point(s).
+              {player.position} place - {player.score} point(s).
             </p>
           </div>
           <div className="player__actions">
